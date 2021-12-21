@@ -1,0 +1,6 @@
+.tlacitko{
+  -fx-background-color:red;
+}
+.tlacitko:hover{
+  -fx-background-color:#dae7f3;
+}
