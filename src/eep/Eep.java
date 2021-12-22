@@ -57,6 +57,12 @@ public class Eep extends Application {
             oknoPrihlasovani.setScene(ScenaPrihlasovani);
             oknoPrihlasovani.show();
         }
+        
+        OfflineData.jednotky.add("ks");
+        OfflineData.jednotky.add("kg");
+        OfflineData.jednotky.add("ml");
+        OfflineData.jednotky.add("l");
+        OfflineData.jednotky.add("%");
     }
 
     /**

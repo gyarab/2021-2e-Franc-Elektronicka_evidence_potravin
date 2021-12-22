@@ -6,6 +6,7 @@
 package eep;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
@@ -24,7 +26,7 @@ import javafx.scene.image.ImageView;
 public class UpravitController implements Initializable {
 
     public Potravina potravina;
-    
+
     @FXML
     private DatePicker datumSpotrebyVstup;
 
@@ -35,13 +37,13 @@ public class UpravitController implements Initializable {
     private ImageView ikonkaVystup;
 
     @FXML
-    private ComboBox<?> jednotkyVstup;
+    private ComboBox<String> jednotkyVstup;
 
     @FXML
     private TextField jmenoVstup;
 
     @FXML
-    private ComboBox<?> kategorieVstup;
+    private ComboBox<String> kategorieVstup;
 
     @FXML
     private TextField mnozstviVstup;
@@ -56,6 +58,38 @@ public class UpravitController implements Initializable {
         Platform.runLater(() -> {
             jmenoVstup.setText(potravina.jmeno);
             eanVstup.setText(potravina.ean);
+            mnozstviVstup.setText(Integer.toString(potravina.mnozstvi));
+            try {
+                String[] datum = potravina.spotreba.split("\\.");
+                int dny = Integer.parseInt(datum[0]);
+                int mesice = Integer.parseInt(datum[1]);
+                int roky = Integer.parseInt(datum[2]);
+                System.out.println(dny + "." + mesice + "." + roky);
+                datumSpotrebyVstup.setValue(LocalDate.of(roky, mesice, dny));
+            } catch (Exception e) {
+
+            }
+
+            for (Kategorie kategorie : OfflineData.kategorie) {
+                if (!potravina.kategorie.equals(kategorie.nazev)) {
+                    kategorieVstup.getItems().add(kategorie.nazev);
+                }
+            }
+            kategorieVstup.setValue(potravina.kategorie);
+            jednotkyVstup.setValue(potravina.jednotky);
+            for (String jednotky : OfflineData.jednotky) {
+                if (!potravina.jednotky.equals(jednotky)) {
+                    jednotkyVstup.getItems().add(jednotky);
+                }
+            }
+            ikonkaVystup.setImage(new Image("eep/pictures/fruits.png"));
+            String odkaz = "eep/pictures/" + potravina.kategorie + ".png";
+            odkaz = odkaz.toLowerCase();
+            try {
+                ikonkaVystup.setImage(new Image(odkaz));
+            } catch (Exception e) {
+                //System.out.println(odkaz);
+            }
         });
     }
 

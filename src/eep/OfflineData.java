@@ -21,8 +21,8 @@ import java.util.logging.Logger;
 public class OfflineData {
 
     public static ArrayList potraviny = new ArrayList();
-    public static ArrayList pridanoNesynchronizovano = new ArrayList();
-    public static ArrayList odebratNesynchronizovano = new ArrayList();
+    public static ArrayList<Kategorie> kategorie = new ArrayList();
+    public static ArrayList<String> jednotky = new ArrayList();
     public static boolean online = false;
     public static boolean zmena;
     
@@ -43,6 +43,11 @@ public class OfflineData {
             potraviny.clear();
             while (rs.next()) {
                 potraviny.add(new Potravina(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7),rs.getString(8)));
+            }
+            rs = stmt.executeQuery("select * from " + Uzivatel.jmeno + " where typ='kategorie' ORDER BY jmeno;");
+            kategorie.clear();
+            while (rs.next()) {
+                kategorie.add(new Kategorie(rs.getString(4), rs.getString(9)));
             }
             connection.close();
             if(puvodni.equals(potraviny)){

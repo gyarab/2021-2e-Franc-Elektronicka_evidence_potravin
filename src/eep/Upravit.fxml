@@ -20,7 +20,7 @@
       </ImageView>
       <TextField fx:id="jmenoVstup" layoutX="240.0" layoutY="110.0" prefHeight="38.0" prefWidth="282.0" promptText="jméno" />
       <TextField fx:id="mnozstviVstup" layoutX="240.0" layoutY="207.0" prefHeight="38.0" prefWidth="282.0" promptText="množství" />
-      <TextField fx:id="eanVstup" alignment="CENTER" layoutX="28.0" layoutY="217.0" prefHeight="28.0" prefWidth="185.0" promptText="Ean kód" style="-fx-background-color: transparent; -fx-text-fill: white;" text="123456789">
+      <TextField fx:id="eanVstup" alignment="CENTER" layoutX="28.0" layoutY="260.0" prefHeight="28.0" prefWidth="185.0" promptText="Ean kód" style="-fx-background-color: transparent; -fx-text-fill: white;" text="123456789">
          <font>
             <Font name="Calibri Bold" size="13.0" />
          </font>
