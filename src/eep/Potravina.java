@@ -39,13 +39,13 @@ public class Potravina {
 
     String typ;
     int id;
-    String ean;
-    String jmeno;
-    String kategorie;
-    String spotreba;
-    int mnozstvi;
-    String jednotky;
-    String poznamky;
+    String ean = "";
+    String jmeno = "";
+    String kategorie = "";
+    String spotreba = "";
+    int mnozstvi  = 1;
+    String jednotky = "";
+    String poznamky = "";
     int odebrano;
 
     public Potravina(String typ, int id, String ean, String jmeno, String kategorie, String spotreba, int mnozstvi, String jednotky) {

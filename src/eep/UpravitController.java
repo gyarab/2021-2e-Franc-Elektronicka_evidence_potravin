@@ -17,6 +17,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -50,7 +51,28 @@ public class UpravitController implements Initializable {
 
     @FXML
     void ulozit(ActionEvent event) {
+        potravina.ean = eanVstup.getText();
+        potravina.jmeno = jmenoVstup.getText();
+        potravina.kategorie = kategorieVstup.getValue();
+        potravina.jednotky = jednotkyVstup.getValue();
+        try {
+            LocalDate selectedDate = datumSpotrebyVstup.getValue();
+            potravina.spotreba = selectedDate.getDayOfMonth() + "." + selectedDate.getMonthValue() + "." + selectedDate.getYear();
+        } catch (Exception e) {
 
+        }
+
+        try {
+            potravina.mnozstvi = Integer.parseInt(mnozstviVstup.getText());
+        } catch (Exception e) {
+            mnozstviVstup.setPromptText("Neplatná hodnota, vkládejte pouze celá čísla.");
+            return;
+        }
+        OfflineData.upravit(potravina);
+        OfflineData.Synchronizovat();
+        Stage stage = (Stage) eanVstup.getScene().getWindow();
+        potravina.poznamky = "aktualizovat";
+        stage.close();
     }
 
     @Override

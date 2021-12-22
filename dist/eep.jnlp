@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="eep.jar" size="7782179" download="eager" />
+    <jar href="eep.jar" size="7783246" download="eager" />
     <jar href="lib\bcprov-ext-jdk14-1.69.jar" size="3789885" download="eager" />
     <jar href="lib\core-3.4.1.jar" size="539286" download="eager" />
     <jar href="lib\maven-javadoc-plugin-3.3.1-sources.jar" size="189042" download="eager" />
