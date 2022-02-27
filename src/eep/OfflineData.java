@@ -21,7 +21,8 @@ import java.util.logging.Logger;
  */
 public class OfflineData {
 
-    public static ArrayList potraviny = new ArrayList();
+    public static ArrayList<Potravina> potraviny = new ArrayList();
+    private static ArrayList potravinyZPredeslehoKroku = null;
     public static ArrayList<Kategorie> kategorie = new ArrayList();
     public static ArrayList<String> jednotky = new ArrayList();
     public static boolean online = false;
@@ -59,7 +60,18 @@ public class OfflineData {
             Logger.getLogger(OfflineData.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             System.out.println("Nepodařilo se připojit");
+            if (potravinyZPredeslehoKroku == null) {
+                potravinyZPredeslehoKroku = (ArrayList) potraviny.clone();
+                zmena = true;
+            } else {
+                if (potravinyZPredeslehoKroku.equals(potraviny)) {
+                    zmena = false;
+                } else {
+                    zmena = true;
+                }
+            }
             online = false;
+            potravinyZPredeslehoKroku = (ArrayList) potraviny.clone();
             return;
         }
         online = true;
@@ -70,6 +82,35 @@ public class OfflineData {
             Class.forName(DB.driverName);
             Connection connection = DriverManager.getConnection(DB.url, DB.username, DB.password);
             String sql = "UPDATE " + Uzivatel.jmeno + " SET ean = '" + potravina.ean + "', jmeno = '" + potravina.jmeno + "', kategorie = '" + potravina.kategorie + "', spotreba = '" + potravina.spotreba + "', mnozstvi = '" + potravina.mnozstvi + "', jednotky = '" + potravina.jednotky + "' where id=" + potravina.id + ";";
+            PreparedStatement updateEXP = connection.prepareStatement(sql);
+            int updateEXP_done = updateEXP.executeUpdate();
+            connection.close();
+            zmena = true;
+        } catch (ClassNotFoundException ex) {
+
+        } catch (SQLException ex) {
+            System.out.println("nepodařilo se přpojt");
+        }
+    }
+
+    public static void smazat(Potravina potravina) {
+        try {
+            Class.forName(DB.driverName);
+            Connection connection = DriverManager.getConnection(DB.url, DB.username, DB.password);
+            String sql;
+            if (potravina.mnozstvi == 1 && potravina.jednotky.equals("ks") || potravina.equals("kg")) {
+                sql = "DELETE FROM " + Uzivatel.jmeno + "  WHERE id=" + potravina.id + ";";
+                for(int i = 0; i < potraviny.size();i++){
+                    if(potraviny.get(i).equals(potravina)){
+                        potraviny.remove(i);
+                        break;
+                    }
+                }
+            }else{
+                sql = "UPDATE " + Uzivatel.jmeno + " SET ean = '" + potravina.ean + "', jmeno = '" + potravina.jmeno + "', kategorie = '" + potravina.kategorie + "', spotreba = '" + potravina.spotreba + "', mnozstvi = '" + (potravina.mnozstvi-1) + "', jednotky = '" + potravina.jednotky + "' where id=" + potravina.id + ";";
+                potravina.mnozstvi --;
+            }
+            zmena = true;
             PreparedStatement updateEXP = connection.prepareStatement(sql);
             int updateEXP_done = updateEXP.executeUpdate();
             connection.close();

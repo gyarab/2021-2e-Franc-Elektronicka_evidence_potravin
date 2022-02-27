@@ -116,8 +116,8 @@ public class Potravina {
         zavrit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("smazat");
-                Zobrazeni.smazat(id);
+                //System.out.println("smazat");
+                OfflineData.smazat(tatoPotravina);
             }
         });
         zavrit.setPrefSize(25, 25);
@@ -180,14 +180,6 @@ public class Potravina {
         AnchorPane.setTopAnchor(potravina, 5.0);
         AnchorPane.setLeftAnchor(potravina, 50.0);
         return potravina;
-    }
-
-    public void odstranit(ActionEvent event) throws IOException {
-        final Node source = (Node) event.getSource();
-        String id = source.getId();
-        this.mnozstvi -= 1;
-        Zobrazeni.smazat(Integer.parseUnsignedInt(id));
-        System.out.println(id);
     }
 
     @Override

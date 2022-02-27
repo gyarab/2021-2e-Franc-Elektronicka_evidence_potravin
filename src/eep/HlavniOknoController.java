@@ -1,11 +1,12 @@
 package eep;
 
-import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.concurrent.ScheduledService;
 import javafx.event.ActionEvent;
@@ -15,14 +16,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -58,6 +61,12 @@ public class HlavniOknoController implements Initializable {
     @FXML
     private Pane nastaveni;
 
+    @FXML
+    private ImageView zrusitHledani;
+
+    @FXML
+    private ComboBox<String> hledatPodleKategorie;
+
     Scene scena;
 
     /**
@@ -65,7 +74,6 @@ public class HlavniOknoController implements Initializable {
      * připojit, tak se jen pokusí o připojení.
      */
     @FXML
-
     void odhlasit(ActionEvent event) throws IOException {
         File f = new File("uzivatel.xml");
         if (f.exists()) {
@@ -101,7 +109,7 @@ public class HlavniOknoController implements Initializable {
          *
          */
         ScheduledService service = new SynchronizaceService(this);
-        service.setPeriod(Duration.seconds(10)); // The interval between executions.
+        service.setPeriod(Duration.seconds(3)); // The interval between executions.
         service.start();
         /**
          * Obsah se vyvolá po načtení celého dokumentu. Jinak by zde nebylo
@@ -123,7 +131,7 @@ public class HlavniOknoController implements Initializable {
                     zobraz();
                 }
             });
-
+            // Reakce na stisknutí klávesy enter
             menu.getScene().setOnKeyReleased(new EventHandler<KeyEvent>() {
 
                 @Override
@@ -131,6 +139,18 @@ public class HlavniOknoController implements Initializable {
                     if (event.getCode().compareTo(KeyCode.ENTER) == 0) {
                         hledatPodleEan(new ActionEvent());
                     }
+                }
+            });
+
+            zrusitHledani.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    mode = 0;
+                    zrusitHledani.setVisible(false);
+                    eanInput.setPromptText("Vložte EAN kód");
+                    eanInput.setText("");
+                    hledatPodleKategorie.setVisible(false);
+                    zobraz();
                 }
             });
             /**
@@ -141,15 +161,58 @@ public class HlavniOknoController implements Initializable {
                 service.cancel();
                 Platform.exit();
             });
-
         });
 
     }
 
     @FXML
     void hledatPodleEan(ActionEvent event) {
-        mode = 1;
-        zobraz();
+        if (mode == 0 || mode == 1) {
+            mode = 1;
+            zrusitHledani.setVisible(true);
+            zobraz();
+        }
+        if (mode == 2 || mode == 3) {
+            zobraz();
+        }
+    }
+
+    @FXML
+    void hledatPodleNazvu(ActionEvent event) {
+        mode = 2;
+        eanInput.setPromptText("Hledat podle názvu");
+        zrusitHledani.setVisible(true);
+        menu.setVisible(false);
+        content.getChildren().clear();
+    }
+
+    @FXML
+    void hledatPodleKategorie(ActionEvent event) {
+        mode = 3;
+        for(int i = 0; i < OfflineData.kategorie.size();i++){
+            hledatPodleKategorie.getItems().add(OfflineData.kategorie.get(i).nazev);
+        }
+        
+        hledatPodleKategorie.setVisible(true);
+        zrusitHledani.setVisible(true);
+        menu.setVisible(false);
+        content.getChildren().clear();
+    }
+
+    @FXML
+    void pridat(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Pridat.fxml"));
+            Parent upravit = loader.load();
+            Stage oknoPridat = new Stage();
+            oknoPridat.setTitle("Pridat - zadejte EAN");
+            oknoPridat.setResizable(false);
+            Scene scenaUpravit = new Scene(upravit);
+            oknoPridat.setScene(scenaUpravit);
+            oknoPridat.show();
+        } catch (IOException ex) {
+            Logger.getLogger(HlavniOknoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public synchronized void zobraz() {
@@ -190,7 +253,57 @@ public class HlavniOknoController implements Initializable {
                 }
             }
             if (j == 1) {
-                zprava.setText("S kódem "+eanHledany+" nebyla nalezena žádná potravina.");
+                zprava.setText("S kódem " + eanHledany + " nebyla nalezena žádná potravina.");
+                content.getChildren().add(zprava);
+                return;
+            }
+        }
+        if (mode == 2) {
+            String jmenoHledane = eanInput.getText();
+            Label zprava = new Label();
+            zprava.setFont(Font.font("Calibri", 23));
+            AnchorPane.setTopAnchor(zprava, 10.0);
+            AnchorPane.setLeftAnchor(zprava, 20.0);
+            zprava.setStyle("-fx-text-fill: white;");
+            if (jmenoHledane.length() == 0) {
+                mode = 0;
+                zobraz();
+                return;
+            }
+            int j = 1;
+            for (int i = 0; i < potraviny.size(); i++) {
+                if (potraviny.get(i).jmeno.toLowerCase().contains(jmenoHledane.toLowerCase())) {
+                    pane.add(potraviny.get(i).potravinaPane(), j % polozkyNaSirku, j / polozkyNaSirku);
+                    j++;
+                }
+            }
+            if (j == 1) {
+                zprava.setText("Se jménem " + jmenoHledane + " nebyla nalezena žádná potravina.");
+                content.getChildren().add(zprava);
+                return;
+            }
+        }
+        if (mode == 3) {
+            String kategorieHledana = hledatPodleKategorie.getValue();
+            Label zprava = new Label();
+            zprava.setFont(Font.font("Calibri", 23));
+            AnchorPane.setTopAnchor(zprava, 10.0);
+            AnchorPane.setLeftAnchor(zprava, 20.0);
+            zprava.setStyle("-fx-text-fill: white;");
+            if (kategorieHledana.length() == 0) {
+                mode = 0;
+                zobraz();
+                return;
+            }
+            int j = 1;
+            for (int i = 0; i < potraviny.size(); i++) {
+                if (potraviny.get(i).kategorie.equals(kategorieHledana)) {
+                    pane.add(potraviny.get(i).potravinaPane(), j % polozkyNaSirku, j / polozkyNaSirku);
+                    j++;
+                }
+            }
+            if (j == 1) {
+                zprava.setText("V kategorii " + kategorieHledana + " nebyla nalezena žádná potravina.");
                 content.getChildren().add(zprava);
                 return;
             }
