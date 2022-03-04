@@ -98,12 +98,13 @@ public class UpravitController implements Initializable {
                 }
             }
             kategorieVstup.setValue(potravina.kategorie);
-            jednotkyVstup.setValue(potravina.jednotky);
             for (String jednotky : OfflineData.jednotky) {
                 if (!potravina.jednotky.equals(jednotky)) {
                     jednotkyVstup.getItems().add(jednotky);
                 }
             }
+            jednotkyVstup.setValue(potravina.jednotky);
+
             ikonkaVystup.setImage(new Image("eep/pictures/fruits.png"));
             String odkaz = "eep/pictures/" + potravina.kategorie + ".png";
             odkaz = odkaz.toLowerCase();
