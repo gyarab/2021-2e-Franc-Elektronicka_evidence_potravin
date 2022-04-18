@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package eep;
 
 import java.beans.XMLDecoder;
@@ -27,21 +22,6 @@ import java.util.logging.Logger;
  * @author xxx
  */
 public class OfflineData {
-
-    static class OfflineSQL {
-
-        String sql;
-        String type;
-
-        public OfflineSQL(String sql) {
-            this.sql = sql;
-        }
-
-        public OfflineSQL(String sql, String type) {
-            this.sql = sql;
-            this.type = type;
-        }
-    }
 
     public static ArrayList<Potravina> potraviny = new ArrayList();
     public static ArrayList<Potravina> ulozenePotraviny = new ArrayList();
@@ -97,7 +77,31 @@ public class OfflineData {
 
         Thread t = new Thread(() -> {
             if (offlineSQL.size() > 0) {
+                try {
+                    Class.forName(DB.driverName);
+                    Connection connection = DriverManager.getConnection(DB.url, DB.username, DB.password);
 
+                    while (offlineSQL.size() != 0) {
+                        int id = offlineSQL.get(0).id;
+                        if (id < 0) {
+
+                        }
+                        String sql = offlineSQL.get(0).sql;
+                        sql = sql.replace("$ID$", id + "");
+                        PreparedStatement updateEXP = connection.prepareStatement(sql);
+                        int updateEXP_done = updateEXP.executeUpdate();
+                        if (offlineSQL.get(0).vratitId == 1) {
+
+                        }
+                        offlineSQL.remove(0);
+                    }
+                    connection.close();
+
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(OfflineData.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(OfflineData.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             stahnoutOnlineData();
             ulozit();
@@ -148,81 +152,19 @@ public class OfflineData {
             System.out.println("Soubor: offlineData.xml nenalezen");
         }
     }
-
-    /*public synchronized static void Synchronizovat() {
-        try {
-            Class.forName(DB.driverName);
-            Connection connection = DriverManager.getConnection(DB.url, DB.username, DB.password);
-            Statement stmt = connection.createStatement();
-
-            ResultSet rs = stmt.executeQuery("select * from " + Uzivatel.jmeno + " where typ='potraviny' ORDER BY jmeno;");
-            ArrayList puvodni = (ArrayList) potraviny.clone();
-            potraviny.clear();
-            while (rs.next()) {
-                potraviny.add(new Potravina(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8)));
-            }
-            rs = stmt.executeQuery("select * from " + Uzivatel.jmeno + " where typ='kategorie' ORDER BY jmeno;");
-            kategorie.clear();
-            while (rs.next()) {
-                kategorie.add(new Kategorie(rs.getString(4), rs.getString(9)));
-            }
-            rs = stmt.executeQuery("select * from " + Uzivatel.jmeno + " where typ='ulozene' ORDER BY jmeno;");
-            ulozenePotraviny.clear();
-            while (rs.next()) {
-                ulozenePotraviny.add(new Potravina(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8)));
-            }
-            connection.close();
-            if (puvodni.equals(potraviny)) {
-                zmena = false;
-            } else {
-                zmena = true;
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(OfflineData.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            System.out.println("Nepodařilo se připojit");
-            if (potravinyZPredeslehoKroku == null) {
-                potravinyZPredeslehoKroku = (ArrayList) potraviny.clone();
-                zmena = true;
-            } else {
-                if (potravinyZPredeslehoKroku.equals(potraviny)) {
-                    zmena = false;
-                } else {
-                    zmena = true;
-                }
-            }
-            online = false;
-            potravinyZPredeslehoKroku = (ArrayList) potraviny.clone();
-            return;
-        }
-        online = true;
-    }*/
+    
     public static void upravit(Potravina potravina) {
-        for(int i = 0; i < potraviny.size(); i++){
-            if(potraviny.get(i).id == potravina.id){
+        for (int i = 0; i < potraviny.size(); i++) {
+            if (potraviny.get(i).id == potravina.id) {
                 potraviny.set(i, potravina);
                 zmena = true;
-                //--  Nastavit příkaz k úpravě
+                // Podání požadavku k nahrání do databáze
+                OfflineSQL task = new OfflineSQL("UPDATE " + Uzivatel.jmeno + " SET ean = '" + potravina.ean + "', jmeno = '" + potravina.jmeno + "', kategorie = '" + potravina.kategorie + "', spotreba = '" + potravina.spotreba + "', mnozstvi = '" + potravina.mnozstvi + "', jednotky = '" + potravina.jednotky + "' where id=$ID$;", potravina.id);
+                offlineSQL.add(task);
                 break;
             }
         }
     }
-    
-    /*
-    try {
-            Class.forName(DB.driverName);
-            Connection connection = DriverManager.getConnection(DB.url, DB.username, DB.password);
-            String sql = "UPDATE " + Uzivatel.jmeno + " SET ean = '" + potravina.ean + "', jmeno = '" + potravina.jmeno + "', kategorie = '" + potravina.kategorie + "', spotreba = '" + potravina.spotreba + "', mnozstvi = '" + potravina.mnozstvi + "', jednotky = '" + potravina.jednotky + "' where id=" + potravina.id + ";";
-            PreparedStatement updateEXP = connection.prepareStatement(sql);
-            int updateEXP_done = updateEXP.executeUpdate();
-            connection.close();
-            zmena = true;
-        } catch (ClassNotFoundException ex) {
-
-        } catch (SQLException ex) {
-            System.out.println("nepodařilo se přpojt");
-        }
-    */
 
     public static void smazat(Potravina potravina) {
         for (int i = 0; i < potraviny.size(); i++) {
@@ -230,57 +172,20 @@ public class OfflineData {
                 if (potravina.jednotky.equals("ks") || potravina.jednotky.equals("kg")) {
                     if (potravina.mnozstvi > 1) {
                         potraviny.get(i).mnozstvi--;
-                        //----  Nastavit příkaz pro úpravu potraviny
+                        //----  Nastavit příkaz pro úpravu potraviny  v databázi
+                        OfflineSQL task = new OfflineSQL("UPDATE " + Uzivatel.jmeno + " SET mnozstvi = '" + (potravina.mnozstvi -1) + "' where id=$ID$;", potravina.id);
+                        offlineSQL.add(task);
                         zmena = true;
                         return;
                     }
                 }
                 potraviny.remove(i);
-                //---- Nastavit příkaz k odstranění potraviny
+                //---- Nastavit příkaz k odstranění potraviny v databázi
+                OfflineSQL task = new OfflineSQL("DELETE FROM " + Uzivatel.jmeno + "  WHERE id=$ID$;", potravina.id);
+                        offlineSQL.add(task);
                 zmena = true;
             }
         }
-        /*try {
-
-            Class.forName(DB.driverName);
-            Connection connection = DriverManager.getConnection(DB.url, DB.username, DB.password);
-            String sql;
-
-            if (potravina.mnozstvi <= 1) {
-                sql = "DELETE FROM " + Uzivatel.jmeno + "  WHERE id=" + potravina.id + ";";
-                for (int i = 0; i < potraviny.size(); i++) {
-                    if (potraviny.get(i).equals(potravina)) {
-                        potraviny.remove(i);
-                        break;
-                    }
-                }
-            } else {
-                sql = "UPDATE " + Uzivatel.jmeno + " SET ean = '" + potravina.ean + "', jmeno = '" + potravina.jmeno + "', kategorie = '" + potravina.kategorie + "', spotreba = '" + potravina.spotreba + "', mnozstvi = '" + (potravina.mnozstvi - 1) + "', jednotky = '" + potravina.jednotky + "' where id=" + potravina.id + ";";
-                for (int i = 0; i < potraviny.size(); i++) {
-                    if (potraviny.get(i).equals(potravina)) {
-                        potraviny.get(i).mnozstvi--;
-                        break;
-                    }
-                }
-            }
-
-            zmena = true;
-            PreparedStatement updateEXP = connection.prepareStatement(sql);
-            int updateEXP_done = updateEXP.executeUpdate();
-            connection.close();
-
-        } catch (ClassNotFoundException ex) {
-
-        } catch (SQLException ex) {
-            if (potravina.mnozstvi <= 1) {
-                offlineSQL.add(new OfflineSQL("DELETE FROM " + Uzivatel.jmeno + "  WHERE id=" + potravina.id + ";"));
-            } else {
-                offlineSQL.add(new OfflineSQL("UPDATE " + Uzivatel.jmeno + " SET ean = '" + potravina.ean + "', jmeno = '" + potravina.jmeno + "', kategorie = '" + potravina.kategorie + "', spotreba = '" + potravina.spotreba + "', mnozstvi = '" + (potravina.mnozstvi - 1) + "', jednotky = '" + potravina.jednotky + "' where id=" + potravina.id + ";"));
-            }
-            zmena = true;
-
-            System.out.println("nepodařilo se přpojt");
-        }*/
     }
 
     public static void pridat(Potravina potravina) {
@@ -314,9 +219,9 @@ public class OfflineData {
 
     public static void pridatUlozenouPotravinu(Potravina potravina) {
         Potravina kPridani = new Potravina();
-        int id = docasnaId[1] -1;
-        docasnaId[1] --;
-        
+        int id = docasnaId[1] - 1;
+        docasnaId[1]--;
+
         kPridani.id = id;
         kPridani.ean = potravina.ean;
         kPridani.kategorie = potravina.kategorie;
@@ -324,7 +229,7 @@ public class OfflineData {
         kPridani.typ = "ulozene";
         kPridani.jednotky = potravina.jednotky;
         ulozenePotraviny.add(kPridani);
-        
+
         //-- doplnit onliene synchronizaci
         /*try {
             Class.forName(DB.driverName);

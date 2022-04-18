@@ -11,7 +11,8 @@ package eep;
  */
 public class OfflineSQL {
     String sql;
-    boolean vratitId = false;
+    int vratitId = 0;// 1 - potravina 2 - ulozena potravina
+    int id;
 
     public OfflineSQL(String sql) {
         this.sql = sql;
@@ -28,12 +29,26 @@ public class OfflineSQL {
         this.sql = sql;
     }
 
-    public boolean isVratitId() {
+    public OfflineSQL(String sql, int id) {
+        this.sql = sql;
+        this.id = id;
+    }
+
+    public int isVratitId() {
         return vratitId;
     }
 
-    public void setVratitId(boolean vratitId) {
+    public void setVratitId(int vratitId) {
         this.vratitId = vratitId;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     
 }
