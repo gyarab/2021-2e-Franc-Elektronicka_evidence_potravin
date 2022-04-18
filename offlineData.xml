@@ -43,7 +43,7 @@
        <string>učebnice</string>
       </void>
       <void property="kategorie">
-       <string>Sladkosti</string>
+       <string>Mléčné výrobky</string>
       </void>
       <void property="spotreba">
        <string>18.3.2022</string>
@@ -153,37 +153,6 @@
       </void>
       <void property="kategorie">
        <string>Domácí produkty</string>
-      </void>
-      <void property="mnozstvi">
-       <int>3</int>
-      </void>
-      <void property="spotreba">
-       <string>1.1.2026</string>
-      </void>
-      <void property="typ">
-       <string>potravina</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="eep.Potravina">
-      <void property="ean">
-       <string>29000002944010</string>
-      </void>
-      <void property="id">
-       <int>-19</int>
-      </void>
-      <void property="jednotky">
-       <string>ks</string>
-      </void>
-      <void property="jmeno">
-       <string>Meruňková marmeláda</string>
-      </void>
-      <void property="kategorie">
-       <string>Domácí produkty</string>
-      </void>
-      <void property="mnozstvi">
-       <int>3</int>
       </void>
       <void property="spotreba">
        <string>1.1.2026</string>

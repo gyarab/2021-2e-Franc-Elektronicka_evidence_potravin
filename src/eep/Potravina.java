@@ -43,7 +43,7 @@ public class Potravina {
     String jmeno = "";
     String kategorie = "";
     String spotreba = "";
-    int mnozstvi  = 1;
+    int mnozstvi = 1;
     String jednotky = "";
     String poznamky = "";
     int odebrano;
@@ -137,7 +137,10 @@ public class Potravina {
         zavrit.setGraphic(krizek);
 
         nadpis.setText(this.jmeno);
-        spotreba.setText(this.spotreba);
+        if (!this.spotreba.equals("0.0.0")) {
+            spotreba.setText(this.spotreba);
+
+        }
         mnozstvi.setText(this.mnozstvi + " " + this.jednotky);
         AnchorPane.setTopAnchor(spotreba, 140.0);
         AnchorPane.setLeftAnchor(spotreba, 7.0);

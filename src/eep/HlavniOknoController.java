@@ -232,8 +232,8 @@ public class HlavniOknoController implements Initializable {
         //System.out.println(polozkyNaSirku);
 
         if (mode == 0) {
-            for (int i = 1; i <= potraviny.size(); i++) {
-                pane.add(potraviny.get(i - 1).potravinaPane(), i % polozkyNaSirku, i / polozkyNaSirku);
+            for (int i = 0; i < potraviny.size(); i++) {
+                pane.add(potraviny.get(i).potravinaPane(), i % polozkyNaSirku, i / polozkyNaSirku);
                 //System.out.println("i: "+i+" sirka: "+i%polozkyNaSirku+" vyska: "+i/polozkyNaSirku);
             }
         }
