@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tisk EAN kódu</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            @font-face {
+                font-family: ean;
+                src: url(EAN13.ttf);
+            }
+            p {
+                background-color: transparent;
+                font-family: ean;
+                font-size: 70px;
+                margin: 0px;
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+            }
+            .etiketa{
+                position: relative;
+                float: left;
+                display: box;
+                margin: 2px;
+                background-color: #CAE3E2;
+                width: 225px;
+                height: 140px;
+            }
+            h1{
+                font-family: arial;
+                font-size: 23px;
+                position: relative;
+                top: -5px;
+                left: 10px;
+                background-color: #CAE3E2;
+                margin-bottom: 0px;
+                width: 215px;
+                max-height: 55px;
+                width: 215px;
+                width: 215px;
+                overflow: hidden;
+            }
+            h2{
+                font-family: arial;
+                font-size: 15px;
+                left: 10px;
+                position: relative;
+            }
+        </style>
+    </head>
+    <body onload="window.print()">
+<div class="etiketa"><p>2900000294400</p><h1>Meruňková marmeláda</h1><h2>1.1.2026</h2></div><div class="etiketa"><p>2900000294400</p><h1>Meruňková marmeláda</h1><h2>1.1.2026</h2></div><div class="etiketa"><p>2900000294400</p><h1>Meruňková marmeláda</h1><h2>1.1.2026</h2></div>    </body></html>

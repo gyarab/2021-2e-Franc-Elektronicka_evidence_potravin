@@ -285,6 +285,7 @@ public class OfflineData {
 
     public static void pridat(Potravina potravina) {
         potraviny.add(potravina);
+        zmena = true;
         // -- doplnit online
         /*try {
             Class.forName(DB.driverName);

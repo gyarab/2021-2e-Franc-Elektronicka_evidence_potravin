@@ -63,7 +63,20 @@ public class PridatController implements Initializable {
 
     @FXML
     void vytvoritNovy(ActionEvent event) {
-
+        try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("PridatNovyEan.fxml"));
+                Parent upravit = loader.load();
+                Stage oknoPridat = new Stage();
+                oknoPridat.setTitle("Vytvořit EAN");
+                oknoPridat.setResizable(false);
+                Scene scenaUpravit = new Scene(upravit);
+                oknoPridat.setScene(scenaUpravit);
+                oknoPridat.show();
+            } catch (IOException ex) {
+                Logger.getLogger(PridatController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Stage stage = (Stage) errorCode.getScene().getWindow();
+            stage.close();
     }
 
     /**

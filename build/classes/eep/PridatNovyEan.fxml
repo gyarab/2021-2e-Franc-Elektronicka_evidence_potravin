@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="461.0" prefWidth="564.0" style="-fx-background-color: #0C2032;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="eep.PridatNovyEanController">
+    <children>
+      <AnchorPane prefHeight="74.0" prefWidth="823.0" style="-fx-background-color: #4B8F8C;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="24.0" layoutY="19.0" text="Přidat" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="nazevVstup" layoutX="72.0" layoutY="125.0" prefHeight="41.0" prefWidth="388.0" promptText="Název">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <ComboBox fx:id="kategorieVstup" layoutX="72.0" layoutY="182.0" prefHeight="41.0" prefWidth="388.0" promptText="kategorie" style="-fx-background-color: white;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <TextField fx:id="mnozstviVstup" layoutX="72.0" layoutY="242.0" prefHeight="38.0" prefWidth="388.0" promptText="množství" />
+      <ComboBox fx:id="jednotkyVstup" layoutX="354.0" layoutY="247.0" prefHeight="28.0" prefWidth="102.0" promptText="jednotky" style="-fx-background-color: white;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <DatePicker fx:id="datumSpotrebyVstup" layoutX="72.0" layoutY="299.0" prefHeight="38.0" prefWidth="388.0" promptText="datum spotřeby" style="-fx-background-color: white;" />
+      <Button layoutX="35.0" layoutY="395.0" mnemonicParsing="false" onAction="#Pridat" prefHeight="38.0" prefWidth="498.0" style="-fx-background-color: #4B8F8C;" text="Přidat" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
