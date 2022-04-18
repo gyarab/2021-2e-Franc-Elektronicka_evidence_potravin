@@ -11,12 +11,13 @@ import javafx.concurrent.Task;
 
 /**
  *
- * @author xxx
+ * @author Vojtěch Franc
+ * Tato třída má přístup ke třídě Hlavního okna, které vyvolává metodu Task, která zkontroluje, zdali není potřeba náhled zaktualizovat. 
+ * Mimo jiné má také na starosti aktualizaci ikonky infirmující o stavu připojení k databázi. 
  */
 public class SynchronizaceService extends ScheduledService<Void> {
 
     HlavniOknoController controller;
-    int opakovani = 0;
 
     public SynchronizaceService(HlavniOknoController controller) {
         this.controller = controller;
@@ -28,34 +29,7 @@ public class SynchronizaceService extends ScheduledService<Void> {
             @Override
             protected Void call() {
                 Platform.runLater(() -> {
-                    if (opakovani == 0) {
-                        boolean aktualizovat = false;
-                        if(OfflineData.zmena == true){
-                            aktualizovat = true;
-                        }
-                        Runnable synchronizaceRunnable = () -> {
-                            OfflineData.Synchronizovat();
-                        };
-                        Thread synchronizaceThread = new Thread(synchronizaceRunnable);
-                        synchronizaceThread.start();
-                        controller.indikator.setText(OfflineData.online == true ? "ONLINE" : "OFFLINE");
-                        // Pokud došlo ke změně v seznamu potravin, aktualizuj jejich zobrazení.
-                        if (OfflineData.zmena == true || aktualizovat) {
-                            System.out.println("Update náhledu");
-                            controller.zobraz();
-                        }
-                        opakovani++;
-                    }else{
-                        opakovani ++;
-                        if(opakovani >= 5){
-                            opakovani = 0;
-                        }
-                        if (OfflineData.zmena == true) {
-                            OfflineData.zmena = false;
-                            System.out.println("Update náhledu");
-                            controller.zobraz();
-                        }
-                    }
+                    OfflineData.synchronizace();
                 });
                 return null;
             }

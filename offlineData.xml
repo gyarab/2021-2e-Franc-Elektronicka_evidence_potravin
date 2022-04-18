@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_291" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>34567800</string>
+      </void>
+      <void property="id">
+       <int>13</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>d.Leicht</string>
+      </void>
+      <void property="kategorie">
+       <string>Ovoce</string>
+      </void>
+      <void property="spotreba">
+       <string>0.0.0</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>9788073972615</string>
+      </void>
+      <void property="id">
+       <int>15</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>učebnice</string>
+      </void>
+      <void property="kategorie">
+       <string>Sladkosti</string>
+      </void>
+      <void property="spotreba">
+       <string>18.3.2022</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>9788073972615</string>
+      </void>
+      <void property="id">
+       <int>17</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>učebnice fyziky</string>
+      </void>
+      <void property="kategorie">
+       <string>Tekuté suroviny</string>
+      </void>
+      <void property="mnozstvi">
+       <int>5</int>
+      </void>
+      <void property="spotreba">
+       <string>2.3.2022</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="eep.Kategorie">
+      <void property="nazev">
+       <string>Domácí produkty</string>
+      </void>
+      <void property="odkazNaIkonku">
+       <string>ikonky/domacivyrobky.png</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Kategorie">
+      <void property="nazev">
+       <string>Konzervy</string>
+      </void>
+      <void property="odkazNaIkonku">
+       <string>ikonky/konzervy.png</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Kategorie">
+      <void property="nazev">
+       <string>Maso</string>
+      </void>
+      <void property="odkazNaIkonku">
+       <string>ikonky/maso.png</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Kategorie">
+      <void property="nazev">
+       <string>Mléčné výrobky</string>
+      </void>
+      <void property="odkazNaIkonku">
+       <string>ikonky/mlecnevyrobky.png</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Kategorie">
+      <void property="nazev">
+       <string>Ovoce</string>
+      </void>
+      <void property="odkazNaIkonku">
+       <string>ikonky/ovoce.png</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Kategorie">
+      <void property="nazev">
+       <string>Sladkosti</string>
+      </void>
+      <void property="odkazNaIkonku">
+       <string>ikonky/sladkosti.png</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Kategorie">
+      <void property="nazev">
+       <string>Sypké suroviny</string>
+      </void>
+      <void property="odkazNaIkonku">
+       <string>ikonky/sypkesuroviny.png</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Kategorie">
+      <void property="nazev">
+       <string>Tekuté suroviny</string>
+      </void>
+      <void property="odkazNaIkonku">
+       <string>ikonky/tekutesiroviny.png</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Kategorie">
+      <void property="nazev">
+       <string>Vody</string>
+      </void>
+      <void property="odkazNaIkonku">
+       <string>ikonky/vody.png</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Kategorie">
+      <void property="nazev">
+       <string>Zelenina</string>
+      </void>
+      <void property="odkazNaIkonku">
+       <string>ikonky/zelenina.png</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>34567800</string>
+      </void>
+      <void property="id">
+       <int>14</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>d.Leicht</string>
+      </void>
+      <void property="kategorie">
+       <string>Ovoce</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>666</string>
+      </void>
+      <void property="id">
+       <int>12</int>
+      </void>
+      <void property="jednotky">
+       <string>kg</string>
+      </void>
+      <void property="jmeno">
+       <string>pokus</string>
+      </void>
+      <void property="kategorie">
+       <string>Domácí produkty</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>9788073972615</string>
+      </void>
+      <void property="id">
+       <int>16</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>učebnice</string>
+      </void>
+      <void property="kategorie">
+       <string>Sladkosti</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <string>ks</string>
+    </void>
+    <void method="add">
+     <string>kg</string>
+    </void>
+    <void method="add">
+     <string>ml</string>
+    </void>
+    <void method="add">
+     <string>l</string>
+    </void>
+    <void method="add">
+     <string>%</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="java.util.ArrayList"/>
+  </void>
+ </object>
+</java>

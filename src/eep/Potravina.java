@@ -66,6 +66,9 @@ public class Potravina {
         this.kategorie = kategorie;
     }
 
+    public Potravina() {
+    }
+
     public int dniDoExpirace() {
         if (spotreba.length() == 0) {
             return -1;
@@ -225,6 +228,86 @@ public class Potravina {
             return false;
         }
         return true;
+    }
+
+    public String getTyp() {
+        return typ;
+    }
+
+    public void setTyp(String typ) {
+        this.typ = typ;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getEan() {
+        return ean;
+    }
+
+    public void setEan(String ean) {
+        this.ean = ean;
+    }
+
+    public String getJmeno() {
+        return jmeno;
+    }
+
+    public void setJmeno(String jmeno) {
+        this.jmeno = jmeno;
+    }
+
+    public String getKategorie() {
+        return kategorie;
+    }
+
+    public void setKategorie(String kategorie) {
+        this.kategorie = kategorie;
+    }
+
+    public String getSpotreba() {
+        return spotreba;
+    }
+
+    public void setSpotreba(String spotreba) {
+        this.spotreba = spotreba;
+    }
+
+    public int getMnozstvi() {
+        return mnozstvi;
+    }
+
+    public void setMnozstvi(int mnozstvi) {
+        this.mnozstvi = mnozstvi;
+    }
+
+    public String getJednotky() {
+        return jednotky;
+    }
+
+    public void setJednotky(String jednotky) {
+        this.jednotky = jednotky;
+    }
+
+    public String getPoznamky() {
+        return poznamky;
+    }
+
+    public void setPoznamky(String poznamky) {
+        this.poznamky = poznamky;
+    }
+
+    public int getOdebrano() {
+        return odebrano;
+    }
+
+    public void setOdebrano(int odebrano) {
+        this.odebrano = odebrano;
     }
 
 }

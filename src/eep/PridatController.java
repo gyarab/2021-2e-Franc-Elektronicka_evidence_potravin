@@ -45,7 +45,6 @@ public class PridatController implements Initializable {
         } else {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Pridat2.fxml"));
-                //Pridat2Controller controller = (Pridat2Controller) loader.getController();
                 OfflineData.pridatEan = eanRepareInput(eanStr);
                 Parent upravit = loader.load();
                 Stage oknoPridat = new Stage();

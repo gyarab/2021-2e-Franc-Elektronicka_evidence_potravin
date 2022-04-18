@@ -31,7 +31,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
- * @author xxx
+ * @author Vojtěch Franc
  */
 public class HlavniOknoController implements Initializable {
 
@@ -69,10 +69,6 @@ public class HlavniOknoController implements Initializable {
 
     Scene scena;
 
-    /**
-     * Stará se o stahování aktualit z databáze keždých 30s. Pokud se nedaří
-     * připojit, tak se jen pokusí o připojení.
-     */
     @FXML
     void odhlasit(ActionEvent event) throws IOException {
         File f = new File("uzivatel.xml");
@@ -105,24 +101,31 @@ public class HlavniOknoController implements Initializable {
         menu.setVisible(false);
         jmeno.setText(Uzivatel.jmeno);
 
-        /**
-         *
-         */
-        ScheduledService service = new SynchronizaceService(this);
-        service.setPeriod(Duration.seconds(3)); // The interval between executions.
-        service.start();
+        ScheduledService serviceNahled = new UpdateNahledu(this);
+        serviceNahled.setPeriod(Duration.seconds(1));
+        serviceNahled.start();
+
+        ScheduledService serviceSynchronizace = new SynchronizaceService(this);
+        serviceSynchronizace.setPeriod(Duration.seconds(30));
+
         /**
          * Obsah se vyvolá po načtení celého dokumentu. Jinak by zde nebylo
          * možné získávat paramtery javaFx objektů.
          */
         Platform.runLater(() -> {
-            OfflineData.Synchronizovat();
             Stage stage = (Stage) menu.getScene().getWindow();
             polozkyNaSirku = (int) stage.getWidth() / sirkaKarty;
+
+            //Získání potravin po prvním načtení
+            //Nahrání uložených potravin z paměti zařízení
+            OfflineData.nacist();
             zobraz();
+            //Pokus o online synchronizaci
+            serviceSynchronizace.start();
+
             /**
-             * Hlídá změnu velikosti okna. Pokud se velikost změní příliš, tak
-             * zaktualizuje zobrazované karty s potravinami.
+             * Metoda hlídá změnu velikosti okna. Pokud se velikost změní
+             * příliš, tak zaktualizuje zobrazované karty s potravinami.
              */
             stage.widthProperty().addListener((obs, oldVal, newVal) -> {
                 if (newVal.intValue() / sirkaKarty != polozkyNaSirku) {
@@ -158,7 +161,8 @@ public class HlavniOknoController implements Initializable {
              */
             stage.setOnCloseRequest(event -> {
                 System.out.println("Stage is closing");
-                service.cancel();
+                serviceNahled.cancel();
+                serviceSynchronizace.cancel();
                 Platform.exit();
             });
         });
@@ -189,10 +193,10 @@ public class HlavniOknoController implements Initializable {
     @FXML
     void hledatPodleKategorie(ActionEvent event) {
         mode = 3;
-        for(int i = 0; i < OfflineData.kategorie.size();i++){
+        for (int i = 0; i < OfflineData.kategorie.size(); i++) {
             hledatPodleKategorie.getItems().add(OfflineData.kategorie.get(i).nazev);
         }
-        
+
         hledatPodleKategorie.setVisible(true);
         zrusitHledani.setVisible(true);
         menu.setVisible(false);
@@ -233,7 +237,7 @@ public class HlavniOknoController implements Initializable {
                 //System.out.println("i: "+i+" sirka: "+i%polozkyNaSirku+" vyska: "+i/polozkyNaSirku);
             }
         }
-        if (mode == 1) {
+        if (mode == 1) {// Hledat na základě EAN kódu
             String eanHledany = eanRepareInput(eanInput.getText());
             Label zprava = new Label();
             zprava.setFont(Font.font("Calibri", 23));

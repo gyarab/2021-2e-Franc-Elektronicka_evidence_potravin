@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author xxx
+ * @author Vojtěch Franc
  */
 public class UpravitController implements Initializable {
 
@@ -69,9 +69,7 @@ public class UpravitController implements Initializable {
             return;
         }
         OfflineData.upravit(potravina);
-        OfflineData.Synchronizovat();
         Stage stage = (Stage) eanVstup.getScene().getWindow();
-        potravina.poznamky = "aktualizovat";
         stage.close();
     }
 

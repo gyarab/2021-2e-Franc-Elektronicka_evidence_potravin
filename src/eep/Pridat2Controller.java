@@ -63,13 +63,15 @@ public class Pridat2Controller implements Initializable {
             mnozstviVstup.setPromptText("Neplatná hodnota, vkládejte pouze celá čísla.");
             return;
         }
-        Potravina kPridani = new Potravina("potravina", -1, eanVstup.getText(), nazevVstup.getText(), kategorieVstup.getValue(), spotreba, mnozstvi, jednotkyVstup.getValue());
+        // Obstarává dočasné ID
+        int id = OfflineData.docasnaId[0] -1;
+        OfflineData.docasnaId[0]--;
+        Potravina kPridani = new Potravina("potravina", id, eanVstup.getText(), nazevVstup.getText(), kategorieVstup.getValue(), spotreba, mnozstvi, jednotkyVstup.getValue());
 
-        kPridani = OfflineData.pridat(kPridani);
+        OfflineData.pridat(kPridani);
         if (!jeUlozene) {
             OfflineData.pridatUlozenouPotravinu(kPridani);
         }
-        OfflineData.potraviny.add(kPridani);
         Stage stage = (Stage) eanVstup.getScene().getWindow();
         stage.close();
     }
@@ -116,6 +118,7 @@ public class Pridat2Controller implements Initializable {
             }
             eanVstup.setText(ean);
             if (!uloz) {
+                // Nastav hodnoty do možností výběru
                 for (Kategorie kategorie : OfflineData.kategorie) {
                     kategorieVstup.getItems().add(kategorie.nazev);
                 }
@@ -125,5 +128,4 @@ public class Pridat2Controller implements Initializable {
             }
         });
     }
-
 }
