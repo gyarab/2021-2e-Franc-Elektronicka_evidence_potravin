@@ -95,6 +95,12 @@ public class HlavniOknoController implements Initializable {
         menu.setVisible(false);
     }
 
+    @FXML
+    void export(ActionEvent event) {
+        menu.setVisible(false);
+        OfflineData.generateExportHTML();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         scena = menu.getScene();

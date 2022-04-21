@@ -174,7 +174,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button id="button" alignment="BOTTOM_LEFT" layoutX="26.0" layoutY="444.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="299.0" style="-fx-background-color: transparent;" stylesheets="@style.css" text="Export">
+            <Button id="button" alignment="BOTTOM_LEFT" layoutX="26.0" layoutY="444.0" mnemonicParsing="false" onAction="#export" prefHeight="31.0" prefWidth="299.0" style="-fx-background-color: transparent;" stylesheets="@style.css" text="Export">
                <font>
                   <Font name="Calibri Bold" size="20.0" />
                </font>

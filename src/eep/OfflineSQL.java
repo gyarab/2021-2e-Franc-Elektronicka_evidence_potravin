@@ -13,12 +13,17 @@ public class OfflineSQL {
     String sql;
     int vratitId = 0;// 1 - potravina 2 - ulozena potravina
     int id;
-
+    boolean ulozenaPotravina = false;
     public OfflineSQL(String sql) {
         this.sql = sql;
     }
 
     public OfflineSQL() {
+    }
+
+    public OfflineSQL(String sql, int id) {
+        this.sql = sql;
+        this.id = id;
     }
 
     public String getSql() {
@@ -29,12 +34,7 @@ public class OfflineSQL {
         this.sql = sql;
     }
 
-    public OfflineSQL(String sql, int id) {
-        this.sql = sql;
-        this.id = id;
-    }
-
-    public int isVratitId() {
+    public int getVratitId() {
         return vratitId;
     }
 
@@ -48,6 +48,14 @@ public class OfflineSQL {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean isUlozenaPotravina() {
+        return ulozenaPotravina;
+    }
+
+    public void setUlozenaPotravina(boolean ulozenaPotravina) {
+        this.ulozenaPotravina = ulozenaPotravina;
     }
     
     

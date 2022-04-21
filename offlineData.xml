@@ -6,22 +6,53 @@
     <void method="add">
      <object class="eep.Potravina">
       <void property="ean">
-       <string>34567800</string>
+       <string>2900050957078</string>
       </void>
       <void property="id">
-       <int>13</int>
+       <int>18</int>
       </void>
       <void property="jednotky">
        <string>ks</string>
       </void>
       <void property="jmeno">
-       <string>d.Leicht</string>
+       <string>Domácí med</string>
       </void>
       <void property="kategorie">
-       <string>Ovoce</string>
+       <string>Sladkosti</string>
+      </void>
+      <void property="mnozstvi">
+       <int>3</int>
       </void>
       <void property="spotreba">
-       <string>0.0.0</string>
+       <string>6.4.2023</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>2900050957078</string>
+      </void>
+      <void property="id">
+       <int>19</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Domácí med</string>
+      </void>
+      <void property="kategorie">
+       <string>Sladkosti</string>
+      </void>
+      <void property="mnozstvi">
+       <int>3</int>
+      </void>
+      <void property="spotreba">
+       <string>6.4.2023</string>
       </void>
       <void property="typ">
        <string>potraviny</string>
@@ -44,9 +75,6 @@
       </void>
       <void property="kategorie">
        <string>Sladkosti</string>
-      </void>
-      <void property="mnozstvi">
-       <int>3</int>
       </void>
       <void property="spotreba">
        <string>2.3.2022</string>
@@ -273,11 +301,13 @@
    <object class="java.util.ArrayList"/>
   </void>
   <void method="add">
-   <array class="int" length="3">
-    <void index="0">
-     <int>-20</int>
-    </void>
-   </array>
+   <array class="int" length="3"/>
+  </void>
+  <void method="add">
+   <array class="int" length="10000"/>
+  </void>
+  <void method="add">
+   <array class="int" length="10000"/>
   </void>
  </object>
 </java>

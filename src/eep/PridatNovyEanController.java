@@ -71,6 +71,10 @@ public class PridatNovyEanController implements Initializable {
                 mnozstviVstup.setPromptText("Neplatná hodnota, vkládejte pouze celá čísla.");
                 return;
             }
+            if(nazevVstup.getText().length() < 1){
+            nazevVstup.setPromptText("Je nutné zadat název potrviny");
+            return;
+        }
             // Obstarává dočasné ID
             int id = OfflineData.docasnaId[0] - 1;
             OfflineData.docasnaId[0]--;

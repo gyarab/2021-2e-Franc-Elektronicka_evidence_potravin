@@ -33,6 +33,7 @@ public class UpdateNahledu extends ScheduledService<Void> {
                         OfflineData.zmena = false;
                         controller.zobraz();
                         System.out.println("Update náhledu z SynchronizaceService");
+                        OfflineData.ulozit();
                     }
                     controller.indikator.setText(OfflineData.online == true ? "ONLINE" : "OFFLINE");
                 });
