@@ -43,6 +43,7 @@ public class OfflineData {
     public static ArrayList<OfflineSQL> offlineSQL = new ArrayList();
     public static int[] tabulkaId = new int[10000];
     public static int[] tabulkaIdUlozenych = new int[10000];
+    public static boolean barevne = false;
 
     public synchronized static void stahnoutOnlineData() {
 
@@ -130,7 +131,7 @@ public class OfflineData {
                                 tabulkaIdUlozenych[Math.abs(id)] = noveId;
                                 for (int i = 0; i < ulozenePotraviny.size(); i++) {
                                     if (ulozenePotraviny.get(i).id == id) {
-                                        ulozenePotraviny.get(id).id = noveId;
+                                        ulozenePotraviny.get(i).id = noveId;
                                         break;
                                     }
                                 }
@@ -139,6 +140,9 @@ public class OfflineData {
                         offlineSQL.remove(0);
                     }
                     connection.close();
+                    docasnaId[0] = 0;
+                    docasnaId[1] = 0;
+                    docasnaId[2] = 0;
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(OfflineData.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
@@ -282,14 +286,14 @@ public class OfflineData {
                     + "        <img src=\"paprikaStonek.png\" class=\"ikonka\" id=\"stonek\"/><img src=\"paprika.png\" class=\"ikonka\"/>\n"
                     + "    <center><div class=\"hlavicka\"><h1>" + Uzivatel.jmeno + "</h1><h3>" +dtf.format(now)+ "</h3></div></center>\n"
                     + "    <table>\n"
-                    + "        <tr id=\"hlavicka\"><td id=\"nazev\">název</td><td id=\"kategorie\">kategorie</td><td id=\"spotreba\">spotřeba</td><td id=\"mnozstvi\">množství</td><td style=\"width: 100px;\">EAN</td></tr>\n"
+                    + "        <tr id=\"hlavicka\"><td id=\"nazev\">název</td><td id=\"kategorie\">kategorie</td><td id=\"spotreba\">spotřeba</td><td id=\"mnozstvi\">množství</td><td style=\"width: 130px;\">EAN</td></tr>\n"
                     + "";
             for (int i = 0; i < OfflineData.potraviny.size(); i++) {
                 String spotreba = "";
                 if (!OfflineData.potraviny.get(i).spotreba.equals("0.0.0")) {
                     spotreba = OfflineData.potraviny.get(i).spotreba;
                 }
-                html = html + "<tr id=\"polozka\"><td id=\"nazev\">" + OfflineData.potraviny.get(i).jmeno + "</td><td id=\"kategorie\">" + OfflineData.potraviny.get(i).kategorie + "</td><td id=\"spotreba\">"+spotreba+"</td><td id=\"mnozstvi\">" + OfflineData.potraviny.get(i).mnozstvi + " " + OfflineData.potraviny.get(i).jednotky + "</td><td id=\"ean\">" + OfflineData.potraviny.get(i).ean + "</td></tr>";
+                html = html + "<tr id=\"polozka\"><td id=\"nazev\">" + OfflineData.potraviny.get(i).jmeno + "</td><td id=\"kategorie\">" + OfflineData.potraviny.get(i).kategorie + "</td><td id=\"spotreba\">"+spotreba+"</td><td id=\"mnozstvi\">" + OfflineData.potraviny.get(i).mnozstvi + " " + OfflineData.potraviny.get(i).jednotky + "</td><td id=\"ean\">" + OfflineData.potraviny.get(i).ean + "</td></tr>\n";
             }
             html = html + "</table></body></html>";
 

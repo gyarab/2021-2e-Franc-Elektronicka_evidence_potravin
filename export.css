@@ -49,9 +49,9 @@ table td, table th {
 }
 #ean{
     position: absolute;
-    width: 100px;
+    width: 130px;
     font-family: ean;
-    font-size: 73px;
+    font-size: 105px;
     height: 30px;
     overflow: hidden;   
     padding-left: 0px;

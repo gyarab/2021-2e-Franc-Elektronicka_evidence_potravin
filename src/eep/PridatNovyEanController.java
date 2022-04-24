@@ -71,10 +71,10 @@ public class PridatNovyEanController implements Initializable {
                 mnozstviVstup.setPromptText("Neplatná hodnota, vkládejte pouze celá čísla.");
                 return;
             }
-            if(nazevVstup.getText().length() < 1){
-            nazevVstup.setPromptText("Je nutné zadat název potrviny");
-            return;
-        }
+            if (nazevVstup.getText().length() < 1) {
+                nazevVstup.setPromptText("Je nutné zadat název potrviny");
+                return;
+            }
             // Obstarává dočasné ID
             int id = OfflineData.docasnaId[0] - 1;
             OfflineData.docasnaId[0]--;
@@ -99,7 +99,7 @@ public class PridatNovyEanController implements Initializable {
                         break;
                     }
                 }
-                System.out.println("Kategorie id "+ idKategorie);
+                System.out.println("Kategorie id " + idKategorie);
                 for (int i = 0; i < 2; i++) {
                     if (idKategorie % 10 == 0) {
                         ean = ean + "0";
@@ -128,12 +128,14 @@ public class PridatNovyEanController implements Initializable {
                     }
                     jmenoHash /= 10;
                 }
-                int kontrolniCislice = 10 - ((3 * Character.getNumericValue(ean.charAt(0)) + Character.getNumericValue(ean.charAt(1)) + 3 * Character.getNumericValue(ean.charAt(2)) + Character.getNumericValue(ean.charAt(3)) + 3 * Character.getNumericValue(ean.charAt(4)) + Character.getNumericValue(ean.charAt(5)) + 3 * Character.getNumericValue(ean.charAt(6)) + Character.getNumericValue(ean.charAt(7)) + 3 * Character.getNumericValue(ean.charAt(8)) + Character.getNumericValue(ean.charAt(9)) + 3 * Character.getNumericValue(ean.charAt(10) + Character.getNumericValue(ean.charAt(11)))) % 10);
-                if(kontrolniCislice == 10){
+                int liche = Character.getNumericValue(ean.charAt(0)) + Character.getNumericValue(ean.charAt(2)) + Character.getNumericValue(ean.charAt(4)) + Character.getNumericValue(ean.charAt(6)) + Character.getNumericValue(ean.charAt(8)) + Character.getNumericValue(ean.charAt(10));
+                int sude = Character.getNumericValue(ean.charAt(1)) + Character.getNumericValue(ean.charAt(3)) + Character.getNumericValue(ean.charAt(5)) + Character.getNumericValue(ean.charAt(7)) + Character.getNumericValue(ean.charAt(9)) + Character.getNumericValue(ean.charAt(11));
+                int kontrolniCislice = 10 - (liche + 3*sude) % 10;
+                if (kontrolniCislice == 10) {
                     kontrolniCislice = 0;
                 }
                 ean = ean + kontrolniCislice;
-                System.out.println("Vygenerovaný ean kód: "+ean);
+                System.out.println("Vygenerovaný ean kód: " + ean);
             } catch (Exception e) {
                 System.out.println("Převod na Ean se nepovedl");
             }

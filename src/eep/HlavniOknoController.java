@@ -1,9 +1,17 @@
 package eep;
 
+import java.awt.AWTException;
+import java.awt.Image;
+import java.awt.SystemTray;
+import java.awt.Toolkit;
+import java.awt.TrayIcon;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -128,6 +136,9 @@ public class HlavniOknoController implements Initializable {
             zobraz();
             //Pokus o online synchronizaci
             serviceSynchronizace.start();
+            
+            //Oznameni
+            createInfoMessage();
 
             /**
              * Metoda hlídá změnu velikosti okna. Pokud se velikost změní
@@ -155,6 +166,7 @@ public class HlavniOknoController implements Initializable {
                 @Override
                 public void handle(MouseEvent event) {
                     mode = 0;
+                    OfflineData.barevne = false;
                     zrusitHledani.setVisible(false);
                     eanInput.setPromptText("Vložte EAN kód");
                     eanInput.setText("");
@@ -165,6 +177,7 @@ public class HlavniOknoController implements Initializable {
             /**
              * Když dojde k zavření okna, tak ukonči vlákna
              */
+
             stage.setOnCloseRequest(event -> {
                 System.out.println("Stage is closing");
                 serviceNahled.cancel();
@@ -177,6 +190,7 @@ public class HlavniOknoController implements Initializable {
 
     @FXML
     void hledatPodleEan(ActionEvent event) {
+        OfflineData.barevne = false;
         if (mode == 0 || mode == 1) {
             mode = 1;
             zrusitHledani.setVisible(true);
@@ -190,6 +204,7 @@ public class HlavniOknoController implements Initializable {
     @FXML
     void hledatPodleNazvu(ActionEvent event) {
         mode = 2;
+        OfflineData.barevne = false;
         eanInput.setPromptText("Hledat podle názvu");
         zrusitHledani.setVisible(true);
         menu.setVisible(false);
@@ -199,6 +214,7 @@ public class HlavniOknoController implements Initializable {
     @FXML
     void hledatPodleKategorie(ActionEvent event) {
         mode = 3;
+        OfflineData.barevne = false;
         for (int i = 0; i < OfflineData.kategorie.size(); i++) {
             hledatPodleKategorie.getItems().add(OfflineData.kategorie.get(i).nazev);
         }
@@ -207,6 +223,17 @@ public class HlavniOknoController implements Initializable {
         zrusitHledani.setVisible(true);
         menu.setVisible(false);
         content.getChildren().clear();
+    }
+
+    @FXML
+    void hledatPodleSpotreby(ActionEvent event) {
+        OfflineData.barevne = true;
+        mode = 4;
+        zrusitHledani.setVisible(true);
+        menu.setVisible(false);
+        content.getChildren().clear();
+        OfflineData.zmena = true;
+        zobraz();
     }
 
     @FXML
@@ -318,6 +345,49 @@ public class HlavniOknoController implements Initializable {
                 return;
             }
         }
+        if (mode == 4) {
+            class Polozka {
+
+                public int getSpotreba() {
+                    return spotreba;
+                }
+                Potravina potravina;
+                int spotreba;
+
+                public Polozka(Potravina potravina, int spotreba) {
+                    this.potravina = potravina;
+                    this.spotreba = spotreba;
+                }
+
+                @Override
+                public String toString() {
+                    return spotreba + "";
+                }
+
+            }
+            ArrayList<Polozka> serazene = new <Polozka>ArrayList();
+            for (int i = 0; i < potraviny.size(); i++) {
+                if (!potraviny.get(i).spotreba.equals("0.0.0")) {
+                    int dniDoSpotreby = potraviny.get(i).dniDoExpirace();
+                    if (dniDoSpotreby != -1) {;
+                        serazene.add(new Polozka(potraviny.get(i), dniDoSpotreby));
+                    }
+                }
+            }
+            Collections.sort(serazene, Comparator.comparing(Polozka::getSpotreba));
+            int j = 0;
+            for (int i = 0; i < serazene.size(); i++) {
+                if (serazene.get(i).spotreba < 0) {
+                    serazene.get(i).potravina.barva = 2;
+                } else {
+                    if (serazene.get(i).spotreba <= 14) {
+                        serazene.get(i).potravina.barva = 1;
+                    }
+                }
+                pane.add(serazene.get(i).potravina.potravinaPane(), j % polozkyNaSirku, j / polozkyNaSirku);
+                j++;
+            }
+        }
 
         content.getChildren().add(pane);
     }
@@ -329,5 +399,41 @@ public class HlavniOknoController implements Initializable {
             input = input.replace(zamenitZ[i], zamenitNa[i]);
         }
         return input;
+    }
+
+    public void createInfoMessage() {
+        for (int i = 0; i < OfflineData.potraviny.size(); i++) {
+            if (OfflineData.potraviny.get(i).dniDoExpirace() <= 0) {
+                try {
+                    SystemTray tray = SystemTray.getSystemTray();
+
+                    Image image = Toolkit.getDefaultToolkit().createImage("maso.png");
+                    TrayIcon trayIcon = new TrayIcon(image, "Tray Demo");
+                    trayIcon.setImageAutoSize(true);
+                    trayIcon.setToolTip("System tray icon demo");
+                    tray.add(trayIcon);
+
+                    trayIcon.displayMessage(OfflineData.potraviny.get(i).jmeno, "Tato potravina překročila minimální datum spotřeby.", TrayIcon.MessageType.NONE);
+                } catch (AWTException e) {
+                    System.out.println("Chyba v tvorbě oznámení.");
+                }
+            }else{
+                if (OfflineData.potraviny.get(i).dniDoExpirace() <= 3) {
+                    try {
+                    SystemTray tray = SystemTray.getSystemTray();
+
+                    Image image = Toolkit.getDefaultToolkit().createImage("maso.png");
+                    TrayIcon trayIcon = new TrayIcon(image, "Tray Demo");
+                    trayIcon.setImageAutoSize(true);
+                    trayIcon.setToolTip("System tray icon demo");
+                    tray.add(trayIcon);
+
+                    trayIcon.displayMessage(OfflineData.potraviny.get(i).jmeno, "Tato potravina překročí dobu minimální trvanlivosti v nadcházejících třech dnech.", TrayIcon.MessageType.NONE);
+                } catch (AWTException e) {
+                    System.out.println("Chyba v tvorbě oznámení.");
+                }
+                }
+            }
+        }
     }
 }

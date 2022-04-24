@@ -6,25 +6,22 @@
     <void method="add">
      <object class="eep.Potravina">
       <void property="ean">
-       <string>2900050957078</string>
+       <string>8594060910192</string>
       </void>
       <void property="id">
-       <int>18</int>
+       <int>34</int>
       </void>
       <void property="jednotky">
-       <string>ks</string>
+       <string>kg</string>
       </void>
       <void property="jmeno">
-       <string>Domácí med</string>
+       <string>Hrubá mouka</string>
       </void>
       <void property="kategorie">
-       <string>Sladkosti</string>
-      </void>
-      <void property="mnozstvi">
-       <int>3</int>
+       <string>Sypké suroviny</string>
       </void>
       <void property="spotreba">
-       <string>6.4.2023</string>
+       <string>1.11.2022</string>
       </void>
       <void property="typ">
        <string>potraviny</string>
@@ -34,25 +31,25 @@
     <void method="add">
      <object class="eep.Potravina">
       <void property="ean">
-       <string>2900050957078</string>
+       <string>2900040531581</string>
       </void>
       <void property="id">
-       <int>19</int>
+       <int>52</int>
       </void>
       <void property="jednotky">
        <string>ks</string>
       </void>
       <void property="jmeno">
-       <string>Domácí med</string>
+       <string>Jablko</string>
       </void>
       <void property="kategorie">
-       <string>Sladkosti</string>
+       <string>Ovoce</string>
       </void>
       <void property="mnozstvi">
        <int>3</int>
       </void>
       <void property="spotreba">
-       <string>6.4.2023</string>
+       <string>8.5.2022</string>
       </void>
       <void property="typ">
        <string>potraviny</string>
@@ -62,22 +59,337 @@
     <void method="add">
      <object class="eep.Potravina">
       <void property="ean">
-       <string>9788073972615</string>
+       <string>8594003020346</string>
       </void>
       <void property="id">
-       <int>17</int>
+       <int>53</int>
       </void>
       <void property="jednotky">
        <string>ks</string>
       </void>
       <void property="jmeno">
-       <string>učebnice</string>
+       <string>Kefírové mléko jahodové</string>
+      </void>
+      <void property="kategorie">
+       <string>Mléčné výrobky</string>
+      </void>
+      <void property="spotreba">
+       <string>14.5.2022</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>8594003029387</string>
+      </void>
+      <void property="id">
+       <int>55</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Kefírové mléko meruňkové</string>
+      </void>
+      <void property="kategorie">
+       <string>Mléčné výrobky</string>
+      </void>
+      <void property="spotreba">
+       <string>16.5.2022</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>2900000454408</string>
+      </void>
+      <void property="id">
+       <int>57</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Meruňková marmeláda</string>
+      </void>
+      <void property="kategorie">
+       <string>Domácí produkty</string>
+      </void>
+      <void property="mnozstvi">
+       <int>5</int>
+      </void>
+      <void property="spotreba">
+       <string>18.4.2025</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>7622210277503</string>
+      </void>
+      <void property="id">
+       <int>49</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Milka Max</string>
       </void>
       <void property="kategorie">
        <string>Sladkosti</string>
       </void>
       <void property="spotreba">
-       <string>2.3.2022</string>
+       <string>19.2.2022</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>4036300140579</string>
+      </void>
+      <void property="id">
+       <int>30</int>
+      </void>
+      <void property="jednotky">
+       <string>l</string>
+      </void>
+      <void property="jmeno">
+       <string>Mléko pro tvorbu milkshake</string>
+      </void>
+      <void property="kategorie">
+       <string>Mléčné výrobky</string>
+      </void>
+      <void property="spotreba">
+       <string>20.4.2022</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>8586000055438</string>
+      </void>
+      <void property="id">
+       <int>32</int>
+      </void>
+      <void property="jednotky">
+       <string>l</string>
+      </void>
+      <void property="jmeno">
+       <string>Ocet kvasný</string>
+      </void>
+      <void property="kategorie">
+       <string>Tekuté suroviny</string>
+      </void>
+      <void property="mnozstvi">
+       <int>2</int>
+      </void>
+      <void property="spotreba">
+       <string>25.4.2022</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>8594013593625</string>
+      </void>
+      <void property="id">
+       <int>41</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Ovesný nápoj do mléka</string>
+      </void>
+      <void property="kategorie">
+       <string>Sypké suroviny</string>
+      </void>
+      <void property="mnozstvi">
+       <int>3</int>
+      </void>
+      <void property="spotreba">
+       <string>7.7.2023</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>2900040295698</string>
+      </void>
+      <void property="id">
+       <int>51</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Pomeranč</string>
+      </void>
+      <void property="kategorie">
+       <string>Ovoce</string>
+      </void>
+      <void property="mnozstvi">
+       <int>5</int>
+      </void>
+      <void property="spotreba">
+       <string>1.5.2022</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>4820060040022</string>
+      </void>
+      <void property="id">
+       <int>45</int>
+      </void>
+      <void property="jednotky">
+       <string>l</string>
+      </void>
+      <void property="jmeno">
+       <string>Slunečnicový olej</string>
+      </void>
+      <void property="kategorie">
+       <string>Tekuté suroviny</string>
+      </void>
+      <void property="spotreba">
+       <string>4.1.2024</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>5410126716016</string>
+      </void>
+      <void property="id">
+       <int>47</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Sušenky Lotus</string>
+      </void>
+      <void property="kategorie">
+       <string>Sladkosti</string>
+      </void>
+      <void property="spotreba">
+       <string>31.10.2022</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>8076800195057</string>
+      </void>
+      <void property="id">
+       <int>43</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Těstoviny 500g</string>
+      </void>
+      <void property="kategorie">
+       <string>Sypké suroviny</string>
+      </void>
+      <void property="mnozstvi">
+       <int>2</int>
+      </void>
+      <void property="spotreba">
+       <string>1.3.2023</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>8595016590789</string>
+      </void>
+      <void property="id">
+       <int>39</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Ume ocet</string>
+      </void>
+      <void property="kategorie">
+       <string>Tekuté suroviny</string>
+      </void>
+      <void property="spotreba">
+       <string>21.7.2022</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>8590421054352</string>
+      </void>
+      <void property="id">
+       <int>22</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Vejce M 10ks</string>
+      </void>
+      <void property="kategorie">
+       <string>Sypké suroviny</string>
+      </void>
+      <void property="spotreba">
+       <string>16.5.2022</string>
       </void>
       <void property="typ">
        <string>potraviny</string>
@@ -195,19 +507,19 @@
     <void method="add">
      <object class="eep.Potravina">
       <void property="ean">
-       <string>34567800</string>
+       <string>8594060910192</string>
       </void>
       <void property="id">
-       <int>14</int>
+       <int>35</int>
       </void>
       <void property="jednotky">
-       <string>ks</string>
+       <string>kg</string>
       </void>
       <void property="jmeno">
-       <string>d.Leicht</string>
+       <string>Hrubá mouka</string>
       </void>
       <void property="kategorie">
-       <string>Ovoce</string>
+       <string>Sypké suroviny</string>
       </void>
       <void property="mnozstvi">
        <int>0</int>
@@ -223,19 +535,159 @@
     <void method="add">
      <object class="eep.Potravina">
       <void property="ean">
-       <string>666</string>
+       <string>8594003020346</string>
       </void>
       <void property="id">
-       <int>12</int>
+       <int>54</int>
       </void>
       <void property="jednotky">
-       <string>kg</string>
+       <string>ks</string>
       </void>
       <void property="jmeno">
-       <string>pokus</string>
+       <string>Kefírové mléko jahodové</string>
       </void>
       <void property="kategorie">
-       <string>Domácí produkty</string>
+       <string>Mléčné výrobky</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>8594003029387</string>
+      </void>
+      <void property="id">
+       <int>56</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Kefírové mléko meruňkové</string>
+      </void>
+      <void property="kategorie">
+       <string>Mléčné výrobky</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>7622210277503</string>
+      </void>
+      <void property="id">
+       <int>50</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Milka Max</string>
+      </void>
+      <void property="kategorie">
+       <string>Sladkosti</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>4036300140579</string>
+      </void>
+      <void property="id">
+       <int>31</int>
+      </void>
+      <void property="jednotky">
+       <string>l</string>
+      </void>
+      <void property="jmeno">
+       <string>Mléko pro tvorbu milkshake</string>
+      </void>
+      <void property="kategorie">
+       <string>Tekuté suroviny</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>8586000055438</string>
+      </void>
+      <void property="id">
+       <int>33</int>
+      </void>
+      <void property="jednotky">
+       <string>l</string>
+      </void>
+      <void property="jmeno">
+       <string>Ocet vkasný</string>
+      </void>
+      <void property="kategorie">
+       <string>Tekuté suroviny</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>8594013593625</string>
+      </void>
+      <void property="id">
+       <int>42</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Ovesný nápoj do mléka</string>
+      </void>
+      <void property="kategorie">
+       <string>Sypké suroviny</string>
       </void>
       <void property="mnozstvi">
        <int>0</int>
@@ -254,16 +706,184 @@
        <string>9788073972615</string>
       </void>
       <void property="id">
-       <int>16</int>
+       <int>37</int>
       </void>
       <void property="jednotky">
        <string>ks</string>
       </void>
       <void property="jmeno">
-       <string>učebnice</string>
+       <string>pokus</string>
+      </void>
+      <void property="kategorie">
+       <string>Maso</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>4820060040022</string>
+      </void>
+      <void property="id">
+       <int>46</int>
+      </void>
+      <void property="jednotky">
+       <string>l</string>
+      </void>
+      <void property="jmeno">
+       <string>Slunečnicový olej</string>
+      </void>
+      <void property="kategorie">
+       <string>Tekuté suroviny</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>5410126716016</string>
+      </void>
+      <void property="id">
+       <int>48</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Sušenky Lotus</string>
       </void>
       <void property="kategorie">
        <string>Sladkosti</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>8076800195057</string>
+      </void>
+      <void property="id">
+       <int>44</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Těstoviny 500g</string>
+      </void>
+      <void property="kategorie">
+       <string>Sypké suroviny</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>8595016590789</string>
+      </void>
+      <void property="id">
+       <int>40</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Ume ocet</string>
+      </void>
+      <void property="kategorie">
+       <string>Tekuté suroviny</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>8590421054352</string>
+      </void>
+      <void property="id">
+       <int>23</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Vejce M 10ks</string>
+      </void>
+      <void property="kategorie">
+       <string>Sypké suroviny</string>
+      </void>
+      <void property="mnozstvi">
+       <int>0</int>
+      </void>
+      <void property="spotreba">
+       <null/>
+      </void>
+      <void property="typ">
+       <string>ulozene</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
+       <string>8590421054352</string>
+      </void>
+      <void property="id">
+       <int>26</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>Vejce M 10ks</string>
+      </void>
+      <void property="kategorie">
+       <string>Sypké suroviny</string>
       </void>
       <void property="mnozstvi">
        <int>0</int>
@@ -304,10 +924,18 @@
    <array class="int" length="3"/>
   </void>
   <void method="add">
-   <array class="int" length="10000"/>
+   <array class="int" length="10000">
+    <void index="1">
+     <int>57</int>
+    </void>
+   </array>
   </void>
   <void method="add">
-   <array class="int" length="10000"/>
+   <array class="int" length="10000">
+    <void index="1">
+     <int>56</int>
+    </void>
+   </array>
   </void>
  </object>
 </java>

@@ -1,15 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package eep;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -17,7 +16,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -33,7 +31,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author xxx
+ * @author Vojtěch Franc
  */
 public class Potravina {
 
@@ -47,6 +45,7 @@ public class Potravina {
     String jednotky = "";
     String poznamky = "";
     int odebrano;
+    int barva = 0;
 
     public Potravina(String typ, int id, String ean, String jmeno, String kategorie, String spotreba, int mnozstvi, String jednotky) {
         this.typ = typ;
@@ -70,18 +69,26 @@ public class Potravina {
     }
 
     public int dniDoExpirace() {
-        if (spotreba.length() == 0) {
-            return -1;
-        }
-        String[] datum = spotreba.split(".");
-        if (datum.length != 2) {
-            return -1;
-        }
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        LocalDate date1 = LocalDate.parse(spotreba, dtf);
-        LocalDate date2 = LocalDate.parse(java.time.LocalDate.now().getMonthValue() + "." + java.time.LocalDate.now().getDayOfMonth() + "." + java.time.LocalDate.now().getYear(), dtf);
-        return (int) Duration.between(date1, date2).toDays();
+        try {
+            if (spotreba.equals("0.0.0")) {
+                return -1;
+            }
+            SimpleDateFormat dtf = new SimpleDateFormat("dd.MM.yyyy");
 
+            Date date1 = new Date();
+            Date date2 = dtf.parse(spotreba);
+            System.out.println("Days: " + getDifferenceDays(date1, date2));
+
+            return (int) getDifferenceDays(date1, date2);
+        } catch (ParseException ex) {
+            System.out.println(spotreba + " je v nesprávném tvaru");
+        }
+        return -1;
+    }
+
+    public static long getDifferenceDays(Date d1, Date d2) {
+        long diff = d2.getTime() - d1.getTime();
+        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
 
     public AnchorPane potravinaPane() {
@@ -90,7 +97,20 @@ public class Potravina {
         potravina.setMinWidth(130);
         potravina.setMaxWidth(130);
         potravina.setMinHeight(170);
-        potravina.setStyle("-fx-background-color: white;");
+        
+        if(OfflineData.barevne == true){
+        if (barva == 1) {
+            potravina.setStyle("-fx-background-color: orange;");
+        } else {
+            if (barva == 2) {
+                potravina.setStyle("-fx-background-color: red;");
+            }else{
+                potravina.setStyle("-fx-background-color: white;");
+            }
+        }
+        }else{
+            potravina.setStyle("-fx-background-color: white;");
+        }
         Label nadpis = new Label();
         nadpis.setCursor(Cursor.HAND);
         nadpis.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -157,7 +177,7 @@ public class Potravina {
 
             ikonka = new ImageView(new Image(odkaz));
         } catch (Exception e) {
-            //System.out.println(odkaz);
+            System.out.println(odkaz);
         }
         ikonka.setFitHeight(75);
         ikonka.setFitWidth(75);
