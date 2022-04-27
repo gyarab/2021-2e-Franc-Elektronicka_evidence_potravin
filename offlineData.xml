@@ -321,6 +321,34 @@
     <void method="add">
      <object class="eep.Potravina">
       <void property="ean">
+       <string>2900000192133</string>
+      </void>
+      <void property="id">
+       <int>58</int>
+      </void>
+      <void property="jednotky">
+       <string>ks</string>
+      </void>
+      <void property="jmeno">
+       <string>švestková marmeláda</string>
+      </void>
+      <void property="kategorie">
+       <string>Domácí produkty</string>
+      </void>
+      <void property="mnozstvi">
+       <int>5</int>
+      </void>
+      <void property="spotreba">
+       <string>26.4.2025</string>
+      </void>
+      <void property="typ">
+       <string>potraviny</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="eep.Potravina">
+      <void property="ean">
        <string>8076800195057</string>
       </void>
       <void property="id">
@@ -926,7 +954,7 @@
   <void method="add">
    <array class="int" length="10000">
     <void index="1">
-     <int>57</int>
+     <int>58</int>
     </void>
    </array>
   </void>

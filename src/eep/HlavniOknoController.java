@@ -136,7 +136,7 @@ public class HlavniOknoController implements Initializable {
             zobraz();
             //Pokus o online synchronizaci
             serviceSynchronizace.start();
-            
+
             //Oznameni
             createInfoMessage();
 
@@ -282,11 +282,10 @@ public class HlavniOknoController implements Initializable {
                 zobraz();
                 return;
             }
-            int j = 1;
+            int j = 0;
             for (int i = 0; i < potraviny.size(); i++) {
                 if (potraviny.get(i).ean.equals(eanHledany)) {
-                    pane.add(potraviny.get(i).potravinaPane(), j % polozkyNaSirku, j / polozkyNaSirku);
-                    j++;
+                    pane.add(potraviny.get(i).potravinaPane(), i % polozkyNaSirku, i / polozkyNaSirku);
                 }
             }
             if (j == 1) {
@@ -402,6 +401,7 @@ public class HlavniOknoController implements Initializable {
     }
 
     public void createInfoMessage() {
+        
         for (int i = 0; i < OfflineData.potraviny.size(); i++) {
             if (OfflineData.potraviny.get(i).dniDoExpirace() <= 0) {
                 try {
@@ -417,21 +417,21 @@ public class HlavniOknoController implements Initializable {
                 } catch (AWTException e) {
                     System.out.println("Chyba v tvorbě oznámení.");
                 }
-            }else{
+            } else {
                 if (OfflineData.potraviny.get(i).dniDoExpirace() <= 3) {
                     try {
-                    SystemTray tray = SystemTray.getSystemTray();
+                        SystemTray tray = SystemTray.getSystemTray();
 
-                    Image image = Toolkit.getDefaultToolkit().createImage("maso.png");
-                    TrayIcon trayIcon = new TrayIcon(image, "Tray Demo");
-                    trayIcon.setImageAutoSize(true);
-                    trayIcon.setToolTip("System tray icon demo");
-                    tray.add(trayIcon);
+                        Image image = Toolkit.getDefaultToolkit().createImage("maso.png");
+                        TrayIcon trayIcon = new TrayIcon(image, "Tray Demo");
+                        trayIcon.setImageAutoSize(true);
+                        trayIcon.setToolTip("System tray icon demo");
+                        tray.add(trayIcon);
 
-                    trayIcon.displayMessage(OfflineData.potraviny.get(i).jmeno, "Tato potravina překročí dobu minimální trvanlivosti v nadcházejících třech dnech.", TrayIcon.MessageType.NONE);
-                } catch (AWTException e) {
-                    System.out.println("Chyba v tvorbě oznámení.");
-                }
+                        trayIcon.displayMessage(OfflineData.potraviny.get(i).jmeno, "Tato potravina překročí dobu minimální trvanlivosti v nadcházejících třech dnech.", TrayIcon.MessageType.NONE);
+                    } catch (AWTException e) {
+                        System.out.println("Chyba v tvorbě oznámení.");
+                    }
                 }
             }
         }

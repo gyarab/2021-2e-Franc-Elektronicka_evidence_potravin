@@ -5,14 +5,13 @@
         <group>
             <file>file:/C:/Users/xxx/Documents/NetBeansProjects/eep/src/eep/HlavniOknoController.java</file>
             <file>file:/C:/Users/xxx/Documents/NetBeansProjects/eep/src/eep/PrihlasovniController.java</file>
-            <file>file:/C:/Users/xxx/Documents/NetBeansProjects/eep/src/eep/Pridat2Controller.java</file>
+            <file>file:/C:/Users/xxx/Documents/NetBeansProjects/eep/src/eep/Potravina.java</file>
+            <file>file:/C:/Users/xxx/Documents/NetBeansProjects/eep/src/eep/Notifications.java</file>
             <file>file:/C:/Users/xxx/Documents/NetBeansProjects/eep/src/eep/PridatNovyEanController.java</file>
-            <file>file:/C:/Users/xxx/Documents/NetBeansProjects/eep/src/eep/Uzivatel.java</file>
-            <file>file:/C:/Users/xxx/Documents/NetBeansProjects/eep/src/eep/DB.java</file>
             <file>file:/C:/Users/xxx/Documents/NetBeansProjects/eep/src/eep/UpdateNahledu.java</file>
             <file>file:/C:/Users/xxx/Documents/NetBeansProjects/eep/src/eep/PridatController.java</file>
-            <file>file:/C:/Users/xxx/Documents/NetBeansProjects/eep/src/eep/SynchronizaceService.java</file>
             <file>file:/C:/Users/xxx/Documents/NetBeansProjects/eep/src/eep/OfflineData.java</file>
+            <file>file:/C:/Users/xxx/Documents/NetBeansProjects/eep/src/eep/Kategorie.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,0 +1,52 @@
+Otevírání odkazu do prohlížeče
+https://stackoverflow.com/questions/5226212/how-to-open-the-default-webbrowser-using-java
+detekce změny velikosti
+https://stackoverflow.com/questions/38216268/how-to-listen-resize-event-of-stage-in-javafx
+https://blog.idrsolutions.com/2012/11/adding-a-window-resize-listener-to-javafx-scene/
+mysql connection
+https://www.javatpoint.com/example-to-connect-to-the-mysql-database
+https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html
+https://stackoverflow.com/questions/2839321/connect-java-to-a-mysql-database
+Get current stage
+https://stackoverflow.com/questions/32922424/how-to-get-the-current-opened-stage-in-javafx
+Gt curent stage in Initialization
+https://stackoverflow.com/questions/13246211/javafx-how-to-get-stage-from-controller-during-initialization
+Run later
+https://stackoverflow.com/questions/13784333/platform-runlater-and-task-in-javafx
+Push notification
+https://stackoverflow.com/questions/34490218/how-to-make-a-windows-notification-in-java
+encoding password
+https://stackoverflow.com/questions/30109958/calculating-sha-3-hash-in-java
+https://jar-download.com/artifacts/org.bouncycastle/bcprov-ext-jdk14/1.49/source-code/org/bouncycastle/jcajce/provider/digest/SHA3.java
+https://lindevs.com/generate-sha3-512-hash-using-php/
+Current object as parameter
+https://stackoverflow.com/questions/6100402/how-does-an-object-pass-itself-as-a-parameter
+Acess JavaFx Thread from another Thread
+https://stackoverflow.com/questions/22772379/updating-ui-from-different-threads-in-javafx
+https://stackoverflow.com/questions/17873597/javafx-updating-ui-elements-in-a-controller-class-from-a-thread
+https://riptutorial.com/javafx/example/23625/how-to-use-javafx-service
+https://docs.oracle.com/javafx/2/threads/jfxpub-threads.htm
+https://riptutorial.com/javafx/example/23625/how-to-use-javafx-service
+Řešení problému
+https://www.baeldung.com/java-executor-service-tutorial
+https://stackoverflow.com/questions/12908412/print-hello-world-every-x-seconds
+https://stackoverflow.com/questions/44474391/how-to-get-a-scheduled-event-to-interact-with-javafx-gui
+https://stackoverflow.com/questions/9966136/javafx-periodic-background-task
+Comparing two ArrayLists of objects
+https://stackoverflow.com/questions/12853121/how-to-compare-two-array-lists-for-similar-objects-which-differ-in-at-least-one
+KeyListener
+https://stackoverflow.com/questions/29962395/how-to-write-a-keylistener-for-javafx
+Fx command to chnge color of text
+https://stackoverflow.com/questions/46354731/javafx-change-the-font-color-of-text-in-a-tab
+Při zavření hlavního okna zavři i ostatní vedlejší
+https://stackoverflow.com/questions/12194967/how-to-close-all-stages-when-the-primary-stage-is-closed/12195366
+Vytvoření seznamu pro výběr
+https://docs.oracle.com/javafx/2/ui_controls/combo-box.htm
+metoda split() nefunguj, když je v parametru String s tečkou
+https://stackoverflow.com/questions/7935858/the-split-method-in-java-does-not-work-on-a-dot/7935873
+získávání dat z DatePicker
+https://stackoverflow.com/questions/4919873/how-to-get-the-date-from-jquery-ui-datepicker
+Reading Ean code from webcam
+https://www.youtube.com/watch?v=9CDaUrjKBIA
+https://github.com/rodriguesabner/QR-Code-em-Java
+
