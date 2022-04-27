@@ -401,7 +401,7 @@ public class HlavniOknoController implements Initializable {
     }
 
     public void createInfoMessage() {
-        
+        /*
         for (int i = 0; i < OfflineData.potraviny.size(); i++) {
             if (OfflineData.potraviny.get(i).dniDoExpirace() <= 0) {
                 try {
@@ -434,6 +434,6 @@ public class HlavniOknoController implements Initializable {
                     }
                 }
             }
-        }
+        }*/
     }
 }
